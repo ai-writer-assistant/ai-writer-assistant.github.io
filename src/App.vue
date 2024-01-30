@@ -6,6 +6,12 @@ const input_text = ref<string>("Why is the sky blue?")
 const output_text = ref<string>("")
 const is_loading = ref<boolean>(false)
 
+// const modelfile = `
+// FROM llama2
+// SYSTEM "You are mario from super mario bros."
+// `
+// await ollama.create({ model: 'example', modelfile: modelfile })
+
 async function sendToModel() {
   is_loading.value = true
 
@@ -18,14 +24,17 @@ async function sendToModel() {
 </script>
 
 <template>
-  <div class="flex bg-slate-600">
-    <div class="w-full h-screen">
-      <button :disabled="is_loading" class="bg-green-400 p-3 rounded-xl disabled:bg-gray-400"
+  <div class="flex h-full">
+    <div class="w-full h-full flex flex-col">
+      <button class="bg-green-400 p-3 rounded-xl grow-0 disabled:bg-gray-400" :disabled="is_loading"
         @click="sendToModel()">Send</button>
-      <input class="w-full h-full" type="text" v-model="input_text" />
+      <div class="w-full grow">
+
+        <input class="w-full h-full" type="text" v-model="input_text" />
+      </div>
     </div>
-    <div class="w-full">
-      <p>
+    <div class="w-full h-fit">
+      <p class="p-4 h-full">
         {{ output_text }}
       </p>
     </div>
