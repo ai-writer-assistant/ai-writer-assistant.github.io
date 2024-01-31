@@ -6,16 +6,14 @@ const input_text = ref<string>("Why is the sky blue?")
 const output_text = ref<string>("")
 const is_loading = ref<boolean>(false)
 
-// const modelfile = `
-// FROM llama2
-// SYSTEM "You are mario from super mario bros."
-// `
-// await ollama.create({ model: 'example', modelfile: modelfile })
-
 async function sendToModel() {
   is_loading.value = true
 
-  const response = await ollama.chat({ model: 'llama2', messages: [{ role: 'user', content: input_text.value }], stream: true })
+  const response = await ollama.chat({
+    model: 'blog',
+    messages: [{ role: 'user', content: input_text.value }],
+    stream: true
+  })
   for await (const part of response) {
     output_text.value += part.message.content
   }
