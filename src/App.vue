@@ -53,12 +53,19 @@ async function sendToModel(id: Number) {
 <template>
   <div class="flex h-full">
     <div class="w-full h-full flex flex-col">
-      <div class="w-full grow" v-for="res_out in all_res_out" :key="res_out.id">
+      <div class="w-full h-full" v-for="res_out in all_res_out" :key="res_out.id">
         <div class="flex h-full">
           <textarea class="w-1/2 h-full" type="text" v-model="res_out.message" />
-          <button class="bg-green-400 p-3 rounded-xl grow-0 disabled:bg-gray-400" :disabled="is_loading"
-            @click="sendToModel(res_out.id)">Send</button>
-          <p class="w-1/2 p-4 h-full">
+          <div class="flex flex-col justify-center">
+            <button class="bg-green-400 p-3 rounded-xl grow-0 disabled:bg-gray-400 w-12 h-12" :disabled="is_loading"
+              @click="sendToModel(res_out.id)">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+            </button>
+          </div>
+          <p class="w-1/2 p-4 h-fit">
             {{ res_out.output }}
           </p>
         </div>
