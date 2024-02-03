@@ -53,21 +53,25 @@ async function sendToModel(id: Number) {
 <template>
   <div class="flex h-full">
     <div class="w-full h-full flex flex-col">
-      <div class="w-full h-full" v-for="res_out in all_res_out" :key="res_out.id">
-        <div class="flex h-full">
-          <textarea class="w-1/2 h-full" type="text" v-model="res_out.message" />
-          <div class="flex flex-col justify-center">
-            <button class="bg-green-400 p-3 rounded-xl grow-0 disabled:bg-gray-400 w-12 h-12" :disabled="is_loading"
-              @click="sendToModel(res_out.id)">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
-                <polygon points="5 3 19 12 5 21 5 3"></polygon>
-              </svg>
-            </button>
+      <div class="w-full h-full flex justify-center" v-for="res_out in all_res_out" :key="res_out.id">
+        <div class="h-full w-3/4 grid grid-cols-9 gap-x-4">
+          <div class="bg-slate-400 rounded-2xl col-span-3 flex p-2 justify-center h-fit">
+            <textarea class="w-full h-full min-h-24" type="text" v-model="res_out.message" />
+            <div class="flex flex-col justify-center h-full min-h-24 m-1">
+              <button class="bg-green-400 p-3 rounded-xl grow-0 disabled:bg-gray-400 w-12 h-12" :disabled="is_loading"
+                @click="sendToModel(res_out.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              </button>
+            </div>
           </div>
-          <p class="w-1/2 p-4 h-fit">
-            {{ res_out.output }}
-          </p>
+          <div class="col-span-6 h-full w-full">
+            <p class="w-full p-4 bg-white h-full">
+              {{ res_out.output }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
