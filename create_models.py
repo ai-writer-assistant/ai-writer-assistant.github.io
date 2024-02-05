@@ -3,7 +3,7 @@ import ollama
 
 modelfile = """
 FROM llama2
-SYSTEM Turn every input into a paragraph of informative blog. Make the English simple and the paragraph extremely short.
+SYSTEM Rewrite the following into a paragraph of a blog with simple yet formal English.
 """
 
 ollama.create(model="blog", modelfile=modelfile)
