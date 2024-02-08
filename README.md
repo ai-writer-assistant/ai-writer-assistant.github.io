@@ -6,6 +6,9 @@ Introducing Write-Assistant, an innovative AI co-writer that transforms your rou
 
 Write-assistant harnesses the power of Llama2, an advanced artificial intelligence model, and with the help of Ollama, allows users to run it locally on their own machines without the need for a server or internet connection. This innovative approach provides a seamless and efficient writing experience, free from any reliance on external infrastructure. By leveraging the capabilities of Llama2 and Ollama, Write-assistant offers a truly personalized and user-friendly platform for writers of all levels.
 
+![An screenshot of the write-assistent](readme/img/screenshot-write-assistent.png)
+> An screenshot of the write-assistent
+
 ## Installation
 
 To install the project, follow these steps:
