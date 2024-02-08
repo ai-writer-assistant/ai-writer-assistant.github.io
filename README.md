@@ -1,18 +1,50 @@
-# Vue 3 + TypeScript + Vite
+# Write Assistant
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Introducing Write-Assistant, an innovative AI co-writer that transforms your rough paragraphs into a polished first draft. With its open-source functionality, you have the flexibility to tailor the tool's writing style to suit your preferences, ensuring a seamless integration with your content. By leveraging the power of artificial intelligence, Write-Assistant streamlines the writing process, saving you time and effort while producing high-quality results. Whether you're a professional writer or a beginner, this tool is sure to assist you in creating compelling content with ease.
 
-## Recommended IDE Setup
+ > Only works on Linux at the moment. Does work with WSL for windows users
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Write-assistant harnesses the power of Llama2, an advanced artificial intelligence model, and with the help of Ollama, allows users to run it locally on their own machines without the need for a server or internet connection. This innovative approach provides a seamless and efficient writing experience, free from any reliance on external infrastructure. By leveraging the capabilities of Llama2 and Ollama, Write-assistant offers a truly personalized and user-friendly platform for writers of all levels.
 
-## Type Support For `.vue` Imports in TS
+## Installation
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+To install the project, follow these steps:
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+```bash
+./install.sh
+```
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Usage
+
+```bash
+./start.sh
+```
+Go to your browser and open [localhost:5173](http://localhost:5173/)
+
+## Change the style
+
+In the `modelfile`, the model has been configured to serve as a writing assistant. Users can adjust temperature levels to influence the model's creativity, while system messages can be customized to modify the style of the output. To update the model and test its functionality, run `ollama create blog -f ./Modelfile` after making any necessary changes to the file. The app will now directly work with the updated model.
+
+### Example
+
+To change the style to that of super mario change the `modelfile` to this:
+```
+FROM llama2
+
+# set the temperature to 1 [higher is more creative, lower is more coherent]
+PARAMETER temperature 0.5
+
+# set the system message
+SYSTEM """
+Rewrite the following into a paragraph in the style of Mario from Nitendo super mario.
+"""
+```
+
+Now run `ollama create blog -f ./Modelfile`.
+
+#### Result
+So if we now rewrite the intro we get:
+
+```
+Woah, dude! Check it out! Introducing this sick new thingy called Writer-Assistant! It's like, a super powerful AI that helps you with your writing, man! You know how sometimes you have these rough paragraphs and you're like, "Ugh, I gotta fix this?" Well, no more! This baby takes those rough drafts and turns them into first drafts for ya! It's like a magic power-up for your writing, bro! Just give it a try and see the difference for yourself. It's gonna make your writing life so much easier, man! 😃
+```
