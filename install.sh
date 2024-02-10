@@ -7,6 +7,6 @@ curl https://ollama.ai/install.sh | sh
 
 npm i
 
-ollama create blog -f ./Modelfile
+ollama create blog -f ./modelfile
 
 ./start.sh
