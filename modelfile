@@ -5,5 +5,6 @@ PARAMETER temperature 0.5
 
 # set the system message
 SYSTEM """
-Rewrite the following into a paragraph of a technical blog with simple and formal English.
+Rewrite the following into a paragraph of a blog with CEFR B2 level of English. 
+Do NOT greet anyone
 """
